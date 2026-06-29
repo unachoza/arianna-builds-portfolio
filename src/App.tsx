@@ -557,7 +557,7 @@ function Contact() {
 		{ label: "Email", val: "ariannacodes@gmail.com", href: "mailto:ariannacodes@gmail.com" },
 		{ label: "LinkedIn", val: "arianna-choza", href: "https://linkedin.com/in/arianna-choza" },
 		{ label: "GitHub", val: "unachoza", href: "https://github.com/unachoza" },
-		{ label: "Location", val: "New York, NY", href: null },
+		{ label: "Location", val: "San Diego, CA", href: null },
 	];
 
 	return (
@@ -587,6 +587,7 @@ function Contact() {
 							View Resume
 						</a>
 					</div>
+
 					<div className="contact__info-row">
 						{links.map((c) => (
 							<div key={c.label}>
@@ -641,22 +642,10 @@ function SiteFooter() {
 	);
 }
 
-function ThemeSwitcher({ current, onChange }: { current: ThemeKey; onChange: (t: ThemeKey) => void }) {
-	return (
-		<div className="theme-switcher">
-			{(Object.keys(THEMES) as ThemeKey[]).map((key) => (
-				<button key={key} onClick={() => onChange(key)} className={`theme-btn${current === key ? " active" : ""}`}>
-					{THEMES[key].label}
-				</button>
-			))}
-		</div>
-	);
-}
-
 // ─── App ─────────────────────────────────────────────────────────────────────
 
 export default function App() {
-	const [theme, setTheme] = useState<ThemeKey>("minimal");
+	const [theme] = useState<ThemeKey>("minimal");
 	const [scrolled, setScrolled] = useState(false);
 	const [activeSection, setActiveSection] = useState("hero");
 
@@ -705,7 +694,6 @@ export default function App() {
 			<Testimonials />
 			<Contact />
 			<SiteFooter />
-			{/* <ThemeSwitcher current={theme} onChange={setTheme} /> */}
 		</div>
 	);
 }
