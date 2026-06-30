@@ -75,9 +75,9 @@ const NAV_SECTIONS = [
 
 const PROJECTS = [
 	{
-		href: "https://entrepreneur-business-site.vercel.app/",
-		github: "https://github.com/unachoza/Entrepreneur-Business-Site",
-		img: "https://res.cloudinary.com/dh41vh9dx/image/upload/v1597080102/800entreprenuer.png",
+		href: "https://landing-page-worklit.vercel.app/",
+		github: "https://github.com/unachoza/frontend-designs/tree/main/workit-landing-page",
+		img: "https://res.cloudinary.com/dh41vh9dx/image/upload/v1782789638/Screenshot_2026-06-29_at_8.19.37_PM_nw58p7.png",
 		alt: "Digital Freelance Business Site",
 		tag: "Small Business · Landing Page",
 		title: "Digital Freelance",
@@ -86,7 +86,7 @@ const PROJECTS = [
 	{
 		href: "http://amazinguinatours.surge.sh/",
 		github: "https://github.com/unachoza/AdvancedCSS/tree/master/Natours",
-		img: "https://res.cloudinary.com/dh41vh9dx/image/upload/v1595629939/NatoursLanding.png",
+		img: "https://res.cloudinary.com/dh41vh9dx/image/upload/v1782775361/Screenshot_2026-06-29_at_4.22.26_PM_mmix0u.png",
 		alt: "Nature Tours",
 		tag: "Service Business · Marketing Site",
 		title: "Nature Tours",
@@ -102,12 +102,12 @@ const PROJECTS = [
 		desc: "Grid-based property showcase with clean typography and a browsable layout. Built with pure CSS Grid — no frameworks, no dependencies.",
 	},
 	{
-		href: "https://fem-planet-fact-site.vercel.app/",
-		github: "https://github.com/unachoza/FEM-planet-fact-site",
-		img: "https://res.cloudinary.com/dh41vh9dx/image/upload/v1720024047/Screenshot_2024-07-03_at_12.16.58_PM.png",
-		alt: "Planet Facts",
-		tag: "Interactive · Design Challenge",
-		title: "Planet Facts",
+		href: "https://frontend-mentor-collection-arianna.netlify.app/agency",
+		github: "https://github.com/unachoza/Frontend-Mentor-Collection/tree/main/src/components/junior/AgencyLandingPage",
+		img: "https://res.cloudinary.com/dh41vh9dx/image/upload/v1782775273/Screenshot_2026-06-29_at_4.20.54_PM_sqssmi.png",
+		alt: "Marketing Agency",
+		tag: "Small Business · Landing Page",
+		title: "Marketing Agency",
 		desc: "Multi-tab interactive site with a rich dark theme, SVG diagrams, and smooth transitions — showcasing what's possible when engineering and design meet.",
 	},
 ];
@@ -473,7 +473,21 @@ function Work() {
 }
 
 function About() {
-	const skills = ["React", "TypeScript", "JavaScript", "Node.js", "HTML & CSS", "SASS", "Figma", "PostgreSQL", "Firebase", "GraphQL"];
+	const skills = [
+		"React",
+		"TypeScript",
+		"JavaScript",
+		"Node.js",
+		"HTML & CSS",
+		"SASS",
+		"Figma",
+		"PostgreSQL",
+		"Firebase",
+		"GraphQL",
+		"Shopify",
+		"Supabase",
+		"Data Dog",
+	];
 
 	return (
 		<section id="about" className="about">
@@ -501,8 +515,8 @@ function About() {
 								the code underneath and the experience on top.
 							</p>
 							<p>
-								Based in NYC, working with clients across the US. I&apos;m direct, easy to work with, and I&apos;ll
-								tell you honestly when something won&apos;t serve your business.
+								Based in San Diego, working with clients across the US. I&apos;m direct, easy to work with, and
+								I&apos;ll tell you honestly when something won&apos;t serve your business.
 							</p>
 							<div className="skills-label">Technologies</div>
 							<div className="skills-tags">
