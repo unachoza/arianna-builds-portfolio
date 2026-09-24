@@ -459,6 +459,10 @@ section {
   background: var(--t-accent);
 }
 
+.pkg--featured .pkg__desc {
+  color: color-mix(in srgb, var(--t-accent-fg) 90%, transparent);
+}
+
 .pkg__badge {
   display: inline-block;
   font-size: 0.68rem;
@@ -489,7 +493,7 @@ section {
 
 .pkg__price {
   font-family: var(--t-heading);
-  font-size: 2.8rem;
+  font-size: 2.2rem;
   line-height: 1;
   margin-bottom: 4px;
   color: var(--t-text);
