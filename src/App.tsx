@@ -112,6 +112,45 @@ const PROJECTS = [
 	},
 ];
 
+const AUDIT_SERVICES = [
+	{
+		tier: "Free Diagnosis",
+		price: "Free",
+		delivery: "2–3 days",
+		featured: false,
+		desc: "15–45 minute audit identifying critical issues and quick-win fixes",
+		on: ["Identify 1–3 key problems", "Understand business impact", "Offer immediate fix if simple"],
+		off: [],
+	},
+	{
+		tier: "Targeted Fix",
+		price: "$200–$800",
+		delivery: "1–3 days",
+		featured: false,
+		desc: "Fix one high-impact issue: typo, form bug, broken redirect, etc.",
+		on: ["Single problem fix", "Fast turnaround", "Immediate conversions boost"],
+		off: [],
+	},
+	{
+		tier: "Campaign Cleanup",
+		price: "$900–$1,500",
+		delivery: "1–2 weeks",
+		featured: false,
+		desc: "Focused audit on one page/flow with strategic improvements",
+		on: ["Page-level audit", "Form/popup optimization", "Mobile & desktop testing", "One revision included"],
+		off: [],
+	},
+	{
+		tier: "Full Site Audit + Fixes",
+		price: "$2,500–$4,500",
+		delivery: "2–3 weeks",
+		featured: true,
+		desc: "Comprehensive audit with prioritized improvements across your entire site",
+		on: ["Complete UX/content audit", "Accessibility basics", "Conversion optimization", "Analytics setup", "Strategic fixes implemented", "Performance review"],
+		off: [],
+	},
+];
+
 const PACKAGES = [
 	{
 		tier: "Starter",
@@ -334,7 +373,46 @@ function Services() {
 					</p>
 				</FadeIn>
 
+				<FadeIn delay={50}>
+					<div className="services__subsection">
+						<h3 className="services__subheading">Audit & Improve Existing Site</h3>
+						<p className="services__subdesc">Find what's broken. Fix it fast. Grow before you rebuild.</p>
+					</div>
+				</FadeIn>
+
 				<FadeIn delay={100}>
+					<div className="pkg-grid">
+						{AUDIT_SERVICES.map((pkg) => (
+							<div key={pkg.tier} className={`pkg${pkg.featured ? " pkg--featured" : ""}`}>
+								{pkg.featured && <span className="pkg__badge">★ Most Popular</span>}
+								<div className="pkg__tier">{pkg.tier}</div>
+								<div className="pkg__price">{pkg.price}</div>
+								<div className="pkg__delivery">{pkg.delivery}</div>
+								<p className="pkg__desc">{pkg.desc}</p>
+								<div className="pkg__divider" />
+								{pkg.on.map((f) => (
+									<div key={f} className="pkg__feature pkg__feature--on">
+										<span className="ico">+</span> {f}
+									</div>
+								))}
+								{pkg.off.map((f) => (
+									<div key={f} className="pkg__feature pkg__feature--off">
+										<span>–</span> {f}
+									</div>
+								))}
+							</div>
+						))}
+					</div>
+				</FadeIn>
+
+				<FadeIn delay={150}>
+					<div className="services__subsection">
+						<h3 className="services__subheading">Build Custom Website from Scratch</h3>
+						<p className="services__subdesc">Fast, custom-coded sites built for conversions.</p>
+					</div>
+				</FadeIn>
+
+				<FadeIn delay={200}>
 					<div className="pkg-grid">
 						{PACKAGES.map((pkg) => (
 							<div key={pkg.tier} className={`pkg${pkg.featured ? " pkg--featured" : ""}`}>
@@ -358,7 +436,7 @@ function Services() {
 					</div>
 				</FadeIn>
 
-				<FadeIn delay={150}>
+				<FadeIn delay={250}>
 					<div className="retainer">
 						<div>
 							<div className="retainer__label">Monthly Maintenance Retainer</div>
@@ -368,7 +446,7 @@ function Services() {
 							</p>
 						</div>
 						<div className="retainer__price">
-							$200–275<span>/mo</span>
+							$200–750<span>/mo</span>
 						</div>
 					</div>
 				</FadeIn>
