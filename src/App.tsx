@@ -141,7 +141,7 @@ const AUDIT_SERVICES = [
 		off: [],
 	},
 	{
-		tier: "Full Site Audit + Fixes",
+		tier: "Full Audit + Fixes",
 		price: "$2,500–$4,500",
 		delivery: "2–3 weeks",
 		featured: true,

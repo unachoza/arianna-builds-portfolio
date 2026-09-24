@@ -481,6 +481,19 @@ section {
   border-radius: 20px;
   margin-bottom: 20px;
   width: fit-content;
+  position: absolute;
+  top: 40px;
+  right: 24px;
+}
+
+.pkg--featured{
+  position: relative;
+}
+
+.services__grid--audit span.pkg__badge {
+  top: 10px;
+  right: 8px;
+  fill: 0.6rem;
 }
 
 .pkg__tier {
