@@ -278,20 +278,19 @@ function Hero() {
 			<div className="container">
 				<div className="hero__grid">
 					<FadeIn>
-						<p className="hero__eyebrow">Freelance Web Developer · NYC</p>
+						<p className="hero__eyebrow">Freelance Web Developer · San Diego, CA</p>
 						<h1 className="hero__heading">
-							I build websites <em>small businesses</em> are proud of.
+							Custom websites from scratch, or strategic <em>fixes</em> to your existing site.
 						</h1>
 						<p className="hero__sub">
-							Fast, custom-coded websites that look great, load in under 2 seconds, and turn visitors into customers. No
-							templates. No bloat. Just clean work, delivered on time.
+							Whether you're starting from scratch or improving what you have, I find opportunities most miss—and deliver fast. Audit your site for free. Fix what's broken. Build what's next.
 						</p>
 						<div className="hero__ctas">
 							<a href="mailto:ariannacodes@gmail.com" className="btn btn-primary btn-lg">
-								Book a Free Call
+								Book a Free Audit
 							</a>
-							<a href="#work" className="btn btn-outline btn-lg">
-								See My Work
+							<a href="#services" className="btn btn-outline btn-lg">
+								Or Start Fresh
 							</a>
 						</div>
 					</FadeIn>
