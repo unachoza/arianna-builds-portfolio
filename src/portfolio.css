@@ -408,13 +408,19 @@ section {
 
 .services__subsection {
   margin-top: 60px;
-  margin-bottom: 40px;
+  margin-bottom: 1rem;
   padding-bottom: 20px;
-  border-bottom: 1px solid var(--t-border);
+}
+
+.services__grid--build .pkg-grid{
+    border-radius: var(--t-r);
+    background: var(--t-border);
+    background: white;
+    gap: 28px;
 }
 
 .services__subsection:first-of-type {
-  margin-top: 0;
+  margin-top: 3rem;
 }
 
 .services__subheading {

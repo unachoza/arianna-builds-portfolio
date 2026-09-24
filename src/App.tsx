@@ -146,7 +146,14 @@ const AUDIT_SERVICES = [
 		delivery: "2–3 weeks",
 		featured: true,
 		desc: "Comprehensive audit with prioritized improvements across your entire site",
-		on: ["Complete UX/content audit", "Accessibility basics", "Conversion optimization", "Analytics setup", "Strategic fixes implemented", "Performance review"],
+		on: [
+			"Complete UX/content audit",
+			"Accessibility basics",
+			"Conversion optimization",
+			"Analytics setup",
+			"Strategic fixes implemented",
+			"Performance review",
+		],
 		off: [],
 	},
 ];
@@ -373,68 +380,72 @@ function Services() {
 					</p>
 				</FadeIn>
 
-				<FadeIn delay={50}>
-					<div className="services__subsection">
-						<h3 className="services__subheading">Audit & Improve Existing Site</h3>
-						<p className="services__subdesc">Find what's broken. Fix it fast. Grow before you rebuild.</p>
-					</div>
-				</FadeIn>
+				<div className="services__grid--audit">
+					<FadeIn delay={50}>
+						<div className="services__subsection">
+							<h3 className="services__subheading">Audit & Improve Existing Site</h3>
+							<p className="services__subdesc">Find what's broken. Fix it fast. Grow before you rebuild.</p>
+						</div>
+					</FadeIn>
 
-				<FadeIn delay={100}>
-					<div className="pkg-grid">
-						{AUDIT_SERVICES.map((pkg) => (
-							<div key={pkg.tier} className={`pkg${pkg.featured ? " pkg--featured" : ""}`}>
-								{pkg.featured && <span className="pkg__badge">★ Most Popular</span>}
-								<div className="pkg__tier">{pkg.tier}</div>
-								<div className="pkg__price">{pkg.price}</div>
-								<div className="pkg__delivery">{pkg.delivery}</div>
-								<p className="pkg__desc">{pkg.desc}</p>
-								<div className="pkg__divider" />
-								{pkg.on.map((f) => (
-									<div key={f} className="pkg__feature pkg__feature--on">
-										<span className="ico">+</span> {f}
-									</div>
-								))}
-								{pkg.off.map((f) => (
-									<div key={f} className="pkg__feature pkg__feature--off">
-										<span>–</span> {f}
-									</div>
-								))}
-							</div>
-						))}
-					</div>
-				</FadeIn>
+					<FadeIn delay={100}>
+						<div className="pkg-grid">
+							{AUDIT_SERVICES.map((pkg) => (
+								<div key={pkg.tier} className={`pkg${pkg.featured ? " pkg--featured" : ""}`}>
+									{pkg.featured && <span className="pkg__badge">★ Most Popular</span>}
+									<div className="pkg__tier">{pkg.tier}</div>
+									<div className="pkg__price">{pkg.price}</div>
+									<div className="pkg__delivery">{pkg.delivery}</div>
+									<p className="pkg__desc">{pkg.desc}</p>
+									<div className="pkg__divider" />
+									{pkg.on.map((f) => (
+										<div key={f} className="pkg__feature pkg__feature--on">
+											<span className="ico">+</span> {f}
+										</div>
+									))}
+									{pkg.off.map((f) => (
+										<div key={f} className="pkg__feature pkg__feature--off">
+											<span>–</span> {f}
+										</div>
+									))}
+								</div>
+							))}
+						</div>
+					</FadeIn>
+				</div>
 
-				<FadeIn delay={150}>
-					<div className="services__subsection">
-						<h3 className="services__subheading">Build Custom Website from Scratch</h3>
-						<p className="services__subdesc">Fast, custom-coded sites built for conversions.</p>
-					</div>
-				</FadeIn>
+				<div className="services__grid--build">
+					<FadeIn delay={150}>
+						<div className="services__subsection">
+							<h3 className="services__subheading">Build Custom Website from Scratch</h3>
+							<p className="services__subdesc">Fast, custom-coded sites built for conversions.</p>
+						</div>
+					</FadeIn>
 
-				<FadeIn delay={200}>
-					<div className="pkg-grid">
-						{PACKAGES.map((pkg) => (
-							<div key={pkg.tier} className={`pkg${pkg.featured ? " pkg--featured" : ""}`}>
-								{pkg.featured && <span className="pkg__badge">★ Most Popular</span>}
-								<div className="pkg__tier">{pkg.tier}</div>
-								<div className="pkg__price">{pkg.price}</div>
-								<div className="pkg__delivery">{pkg.delivery}</div>
-								<div className="pkg__divider" />
-								{pkg.on.map((f) => (
-									<div key={f} className="pkg__feature pkg__feature--on">
-										<span className="ico">+</span> {f}
-									</div>
-								))}
-								{pkg.off.map((f) => (
-									<div key={f} className="pkg__feature pkg__feature--off">
-										<span>–</span> {f}
-									</div>
-								))}
-							</div>
-						))}
-					</div>
-				</FadeIn>
+					<FadeIn delay={200}>
+						<div className="pkg-grid">
+							{PACKAGES.map((pkg) => (
+								<div key={pkg.tier} className={`pkg${pkg.featured ? " pkg--featured" : ""}`}>
+									{pkg.featured && <span className="pkg__badge">★ Most Popular</span>}
+									<div className="pkg__tier">{pkg.tier}</div>
+									<div className="pkg__price">{pkg.price}</div>
+									<div className="pkg__delivery">{pkg.delivery}</div>
+									<div className="pkg__divider" />
+									{pkg.on.map((f) => (
+										<div key={f} className="pkg__feature pkg__feature--on">
+											<span className="ico">+</span> {f}
+										</div>
+									))}
+									{pkg.off.map((f) => (
+										<div key={f} className="pkg__feature pkg__feature--off">
+											<span>–</span> {f}
+										</div>
+									))}
+								</div>
+							))}
+						</div>
+					</FadeIn>
+				</div>
 
 				<FadeIn delay={250}>
 					<div className="retainer">
