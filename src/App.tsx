@@ -280,10 +280,10 @@ function Hero() {
 					<FadeIn>
 						<p className="hero__eyebrow">Web Developer · San Diego, CA</p>
 						<h1 className="hero__heading">
-							<em>Strategic fixes</em> to your existing site or <em>Custom websites</em> from scratch
+							<em>Strategic fixes</em> to your existing site<br/> or <em>Custom websites</em> from scratch
 						</h1>
 						<p className="hero__sub">
-							Whether you're starting from scratch or improving what you have, I find opportunities most miss—and deliver
+							Whether you're starting from scratch or improving what you have, I find opportunities most miss and deliver
 							fast. Audit your site for free. Fix what's broken. Build what's next.
 						</p>
 						<div className="hero__ctas">
