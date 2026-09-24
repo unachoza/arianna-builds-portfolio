@@ -325,8 +325,7 @@ section {
 
 .hero__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  grid-template-columns: 2fr 1fr;
   align-items: center;
 }
 
@@ -371,7 +370,7 @@ section {
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px;
+  gap: 10px;
 }
 
 .stat-card {

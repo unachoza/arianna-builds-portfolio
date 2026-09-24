@@ -278,12 +278,13 @@ function Hero() {
 			<div className="container">
 				<div className="hero__grid">
 					<FadeIn>
-						<p className="hero__eyebrow">Freelance Web Developer · San Diego, CA</p>
+						<p className="hero__eyebrow">Web Developer · San Diego, CA</p>
 						<h1 className="hero__heading">
-							Custom websites from scratch, or strategic <em>fixes</em> to your existing site.
+							<em>Strategic fixes</em> to your existing site or <em>Custom websites</em> from scratch
 						</h1>
 						<p className="hero__sub">
-							Whether you're starting from scratch or improving what you have, I find opportunities most miss—and deliver fast. Audit your site for free. Fix what's broken. Build what's next.
+							Whether you're starting from scratch or improving what you have, I find opportunities most miss—and deliver
+							fast. Audit your site for free. Fix what's broken. Build what's next.
 						</p>
 						<div className="hero__ctas">
 							<a href="mailto:ariannacodes@gmail.com" className="btn btn-primary btn-lg">
