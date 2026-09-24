@@ -490,6 +490,10 @@ section {
   position: relative;
 }
 
+.pkg--featured .pkg__delivery{
+  margin-bottom: 10px;
+}
+
 .services__grid--audit span.pkg__badge {
   top: 10px;
   right: 8px;
