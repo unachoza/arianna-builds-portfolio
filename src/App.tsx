@@ -235,6 +235,33 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 	);
 }
 
+// ─── Reusable Components ────────────────────────────────────────────────────
+
+function SlideToggle({
+	options,
+	activeIndex,
+	onSelect,
+}: {
+	options: [string, string];
+	activeIndex: number;
+	onSelect: (index: number) => void;
+}) {
+	return (
+		<div className={`slide-toggle${activeIndex === 1 ? " slide-toggle--right" : ""}`}>
+			<span className="slide-toggle__slider" />
+			{options.map((label, i) => (
+				<button
+					key={label}
+					className={`slide-toggle__btn${i === activeIndex ? " slide-toggle__btn--active" : ""}`}
+					onClick={() => onSelect(i)}
+				>
+					{label}
+				</button>
+			))}
+		</div>
+	);
+}
+
 // ─── Nav ─────────────────────────────────────────────────────────────────────
 
 function Nav({ scrolled, activeSection }: { scrolled: boolean; activeSection: string }) {
@@ -529,20 +556,11 @@ function Process() {
 				</FadeIn>
 
 				<FadeIn delay={50}>
-					<div className="process-toggle">
-						<button
-							className={`process-toggle__btn${processPath === "audit" ? " process-toggle__btn--active" : ""}`}
-							onClick={() => setProcessPath("audit")}
-						>
-							Audit & Improve
-						</button>
-						<button
-							className={`process-toggle__btn${processPath === "build" ? " process-toggle__btn--active" : ""}`}
-							onClick={() => setProcessPath("build")}
-						>
-							Build from Scratch
-						</button>
-					</div>
+					<SlideToggle
+						options={["Audit & Improve", "Build from Scratch"]}
+						activeIndex={processPath === "audit" ? 0 : 1}
+						onSelect={(i) => setProcessPath(i === 0 ? "audit" : "build")}
+					/>
 				</FadeIn>
 
 				<FadeIn delay={100}>

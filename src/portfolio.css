@@ -689,18 +689,35 @@ section {
   background: var(--t-bg);
 }
 
-.process-toggle {
+/* ── Slide Toggle (reusable) ────────────────────────────────────────────── */
+
+.slide-toggle {
   display: flex;
-  gap: 4px;
-  background: var(--t-bg2);
+  position: relative;
+  background: var(--t-bg3);
   border: 1px solid var(--t-border);
   border-radius: 40px;
   padding: 4px;
   width: fit-content;
-  margin-bottom: 40px;
 }
 
-.process-toggle__btn {
+.slide-toggle__slider {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background: var(--t-accent);
+  border-radius: 30px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.slide-toggle--right .slide-toggle__slider {
+  transform: translateX(100%);
+}
+
+.slide-toggle__btn {
   font-family: var(--t-body);
   font-size: 0.88rem;
   font-weight: 600;
@@ -710,17 +727,23 @@ section {
   cursor: pointer;
   background: transparent;
   color: var(--t-muted);
-  transition: background 0.25s, color 0.25s !important;
+  transition: color 0.25s !important;
   white-space: nowrap;
+  position: relative;
+  z-index: 1;
+  flex: 1;
 }
 
-.process-toggle__btn--active {
-  background: var(--t-accent);
+.slide-toggle__btn--active {
   color: var(--t-accent-fg);
 }
 
-.process-toggle__btn:not(.process-toggle__btn--active):hover {
+.slide-toggle__btn:not(.slide-toggle__btn--active):hover {
   color: var(--t-text);
+}
+
+.process .slide-toggle {
+  margin-bottom: 40px;
 }
 
 .steps-grid {
