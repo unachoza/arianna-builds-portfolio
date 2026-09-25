@@ -315,6 +315,33 @@ function Nav({ scrolled, activeSection }: { scrolled: boolean; activeSection: st
 	);
 }
 
+// ─── Reusable Components ────────────────────────────────────────────────────
+
+function SlideToggle({
+	options,
+	activeIndex,
+	onSelect,
+}: {
+	options: [string, string];
+	activeIndex: number;
+	onSelect: (index: number) => void;
+}) {
+	return (
+		<div className={`slide-toggle${activeIndex === 1 ? " slide-toggle--right" : ""}`}>
+			<span className="slide-toggle__slider" />
+			{options.map((label, i) => (
+				<button
+					key={label}
+					className={`slide-toggle__btn${i === activeIndex ? " slide-toggle__btn--active" : ""}`}
+					onClick={() => onSelect(i)}
+				>
+					{label}
+				</button>
+			))}
+		</div>
+	);
+}
+
 // ─── Sections ────────────────────────────────────────────────────────────────
 
 function Hero() {
@@ -383,21 +410,11 @@ function Services() {
 				</FadeIn>
 
 				<FadeIn delay={50}>
-					<div className={`pricing-toggle${activeTab === "build" ? " pricing-toggle--right" : ""}`}>
-						<span className="pricing-toggle__slider" />
-						<button
-							className={`pricing-toggle__btn${activeTab === "audit" ? " pricing-toggle__btn--active" : ""}`}
-							onClick={() => setActiveTab("audit")}
-						>
-							Audit & Fix
-						</button>
-						<button
-							className={`pricing-toggle__btn${activeTab === "build" ? " pricing-toggle__btn--active" : ""}`}
-							onClick={() => setActiveTab("build")}
-						>
-							Starting Fresh
-						</button>
-					</div>
+					<SlideToggle
+						options={["Audit & Fix", "Starting Fresh"]}
+						activeIndex={activeTab === "audit" ? 0 : 1}
+						onSelect={(i) => setActiveTab(i === 0 ? "audit" : "build")}
+					/>
 				</FadeIn>
 
 				{activeTab === "audit" && (

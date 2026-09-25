@@ -406,7 +406,9 @@ section {
   border-top: 1px solid var(--t-border);
 }
 
-.pricing-toggle {
+/* ── Slide Toggle (reusable) ────────────────────────────────────────────── */
+
+.slide-toggle {
   display: flex;
   position: relative;
   background: var(--t-bg3);
@@ -414,10 +416,9 @@ section {
   border-radius: 40px;
   padding: 4px;
   width: fit-content;
-  margin: 0 auto 48px;
 }
 
-.pricing-toggle__slider {
+.slide-toggle__slider {
   position: absolute;
   top: 4px;
   left: 4px;
@@ -429,11 +430,11 @@ section {
   z-index: 0;
 }
 
-.pricing-toggle--right .pricing-toggle__slider {
+.slide-toggle--right .slide-toggle__slider {
   transform: translateX(100%);
 }
 
-.pricing-toggle__btn {
+.slide-toggle__btn {
   font-family: var(--t-body);
   font-size: 0.88rem;
   font-weight: 600;
@@ -450,12 +451,16 @@ section {
   flex: 1;
 }
 
-.pricing-toggle__btn--active {
+.slide-toggle__btn--active {
   color: var(--t-accent-fg);
 }
 
-.pricing-toggle__btn:not(.pricing-toggle__btn--active):hover {
+.slide-toggle__btn:not(.slide-toggle__btn--active):hover {
   color: var(--t-text);
+}
+
+.services .slide-toggle {
+  margin: 0 auto 48px;
 }
 
 .services__subsection {
