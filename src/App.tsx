@@ -235,6 +235,33 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 	);
 }
 
+// ─── Reusable Components ────────────────────────────────────────────────────
+
+function SlideToggle({
+	options,
+	activeIndex,
+	onSelect,
+}: {
+	options: [string, string];
+	activeIndex: number;
+	onSelect: (index: number) => void;
+}) {
+	return (
+		<div className={`slide-toggle${activeIndex === 1 ? " slide-toggle--right" : ""}`}>
+			<span className="slide-toggle__slider" />
+			{options.map((label, i) => (
+				<button
+					key={label}
+					className={`slide-toggle__btn${i === activeIndex ? " slide-toggle__btn--active" : ""}`}
+					onClick={() => onSelect(i)}
+				>
+					{label}
+				</button>
+			))}
+		</div>
+	);
+}
+
 // ─── Nav ─────────────────────────────────────────────────────────────────────
 
 function Nav({ scrolled, activeSection }: { scrolled: boolean; activeSection: string }) {
@@ -383,21 +410,11 @@ function Services() {
 				</FadeIn>
 
 				<FadeIn delay={50}>
-					<div className={`pricing-toggle${activeTab === "build" ? " pricing-toggle--right" : ""}`}>
-						<span className="pricing-toggle__slider" />
-						<button
-							className={`pricing-toggle__btn${activeTab === "audit" ? " pricing-toggle__btn--active" : ""}`}
-							onClick={() => setActiveTab("audit")}
-						>
-							Audit & Fix
-						</button>
-						<button
-							className={`pricing-toggle__btn${activeTab === "build" ? " pricing-toggle__btn--active" : ""}`}
-							onClick={() => setActiveTab("build")}
-						>
-							Starting Fresh
-						</button>
-					</div>
+					<SlideToggle
+						options={["Audit & Fix", "Starting Fresh"]}
+						activeIndex={activeTab === "audit" ? 0 : 1}
+						onSelect={(i) => setActiveTab(i === 0 ? "audit" : "build")}
+					/>
 				</FadeIn>
 
 				{activeTab === "audit" && (
@@ -476,7 +493,46 @@ function Services() {
 	);
 }
 
+const PROCESS_AUDIT = [
+	{
+		n: "01",
+		title: "Free Audit",
+		desc: "I review your site and identify 1–3 key issues — broken forms, confusing UX, conversion leaks, accessibility gaps. You get a clear summary, no strings attached.",
+	},
+	{
+		n: "02",
+		title: "Prioritize",
+		desc: "I show you what matters most and what to fix first. You'll see the business impact of each issue and a transparent quote before any work starts.",
+	},
+	{
+		n: "03",
+		title: "Fix & Measure",
+		desc: "Fast turnaround on targeted fixes with measurable results. If a full redesign makes sense later, you'll already trust the process.",
+	},
+];
+
+const PROCESS_BUILD = [
+	{
+		n: "01",
+		title: "Discovery",
+		desc: "We start with a free 30-minute call. I'll ask the right questions about your business, your goals, and what success looks like — so you never have to over-explain.",
+	},
+	{
+		n: "02",
+		title: "Build",
+		desc: "I design and build your site custom, from scratch. You'll see a working preview before anything goes live, and we'll refine until it's exactly right.",
+	},
+	{
+		n: "03",
+		title: "Launch",
+		desc: "I handle deployment and launch day. Then I hand you the keys with a walkthrough so you're never left wondering how to make a simple update.",
+	},
+];
+
 function Process() {
+	const [processPath, setProcessPath] = useState<"audit" | "build">("audit");
+	const steps = processPath === "audit" ? PROCESS_AUDIT : PROCESS_BUILD;
+
 	return (
 		<section id="process" className="process">
 			<div className="container">
@@ -488,25 +544,18 @@ function Process() {
 						Zero headaches.
 					</h2>
 				</FadeIn>
+
+				<FadeIn delay={50}>
+					<SlideToggle
+						options={["Audit & Improve", "Build from Scratch"]}
+						activeIndex={processPath === "audit" ? 0 : 1}
+						onSelect={(i) => setProcessPath(i === 0 ? "audit" : "build")}
+					/>
+				</FadeIn>
+
 				<FadeIn delay={100}>
 					<div className="steps-grid">
-						{[
-							{
-								n: "01",
-								title: "Discovery",
-								desc: "We start with a free 30-minute call. I'll ask the right questions about your business, your goals, and what success looks like — so you never have to over-explain.",
-							},
-							{
-								n: "02",
-								title: "Build",
-								desc: "I design and build your site custom, from scratch. You'll see a working preview before anything goes live, and we'll refine until it's exactly right.",
-							},
-							{
-								n: "03",
-								title: "Launch",
-								desc: "I handle deployment and launch day. Then I hand you the keys with a walkthrough so you're never left wondering how to make a simple update.",
-							},
-						].map((s) => (
+						{steps.map((s) => (
 							<div key={s.n} className="step">
 								<div className="step__number">{s.n}</div>
 								<h3 className="step__title">{s.title}</h3>
@@ -612,6 +661,12 @@ function About() {
 								What that means for you:{" "}
 								<strong>a site that loads fast, looks intentional, and actually converts.</strong> I care about both
 								the code underneath and the experience on top.
+							</p>
+							<p>
+								But great code isn&apos;t just about building new. I also audit existing websites — finding
+								the bugs, UX issues, and conversion leaks that most developers miss. I believe fixing
+								what&apos;s broken is just as valuable as building from scratch, and often the smarter
+								starting point.
 							</p>
 							<p>
 								Based in San Diego, working with clients across the US. I&apos;m direct, easy to work with, and

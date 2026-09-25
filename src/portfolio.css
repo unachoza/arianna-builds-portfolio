@@ -406,56 +406,8 @@ section {
   border-top: 1px solid var(--t-border);
 }
 
-.pricing-toggle {
-  display: flex;
-  position: relative;
-  background: var(--t-bg3);
-  border: 1px solid var(--t-border);
-  border-radius: 40px;
-  padding: 4px;
-  width: fit-content;
+.services .slide-toggle {
   margin: 0 auto 48px;
-}
-
-.pricing-toggle__slider {
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  width: calc(50% - 4px);
-  height: calc(100% - 8px);
-  background: var(--t-accent);
-  border-radius: 30px;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 0;
-}
-
-.pricing-toggle--right .pricing-toggle__slider {
-  transform: translateX(100%);
-}
-
-.pricing-toggle__btn {
-  font-family: var(--t-body);
-  font-size: 0.88rem;
-  font-weight: 600;
-  padding: 10px 28px;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  background: transparent;
-  color: var(--t-muted);
-  transition: color 0.25s !important;
-  white-space: nowrap;
-  position: relative;
-  z-index: 1;
-  flex: 1;
-}
-
-.pricing-toggle__btn--active {
-  color: var(--t-accent-fg);
-}
-
-.pricing-toggle__btn:not(.pricing-toggle__btn--active):hover {
-  color: var(--t-text);
 }
 
 .services__subsection {
@@ -687,6 +639,63 @@ section {
 
 .process {
   background: var(--t-bg);
+}
+
+/* ── Slide Toggle (reusable) ────────────────────────────────────────────── */
+
+.slide-toggle {
+  display: flex;
+  position: relative;
+  background: var(--t-bg3);
+  border: 1px solid var(--t-border);
+  border-radius: 40px;
+  padding: 4px;
+  width: fit-content;
+}
+
+.slide-toggle__slider {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background: var(--t-accent);
+  border-radius: 30px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.slide-toggle--right .slide-toggle__slider {
+  transform: translateX(100%);
+}
+
+.slide-toggle__btn {
+  font-family: var(--t-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 10px 28px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: var(--t-muted);
+  transition: color 0.25s !important;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.slide-toggle__btn--active {
+  color: var(--t-accent-fg);
+}
+
+.slide-toggle__btn:not(.slide-toggle__btn--active):hover {
+  color: var(--t-text);
+}
+
+.process .slide-toggle {
+  margin-bottom: 40px;
 }
 
 .steps-grid {
