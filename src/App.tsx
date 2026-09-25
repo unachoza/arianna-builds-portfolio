@@ -383,7 +383,8 @@ function Services() {
 				</FadeIn>
 
 				<FadeIn delay={50}>
-					<div className="pricing-toggle">
+					<div className={`pricing-toggle${activeTab === "build" ? " pricing-toggle--right" : ""}`}>
+						<span className="pricing-toggle__slider" />
 						<button
 							className={`pricing-toggle__btn${activeTab === "audit" ? " pricing-toggle__btn--active" : ""}`}
 							onClick={() => setActiveTab("audit")}

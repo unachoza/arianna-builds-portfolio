@@ -408,13 +408,29 @@ section {
 
 .pricing-toggle {
   display: flex;
-  gap: 4px;
+  position: relative;
   background: var(--t-bg3);
   border: 1px solid var(--t-border);
   border-radius: 40px;
   padding: 4px;
   width: fit-content;
   margin: 0 auto 48px;
+}
+
+.pricing-toggle__slider {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background: var(--t-accent);
+  border-radius: 30px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.pricing-toggle--right .pricing-toggle__slider {
+  transform: translateX(100%);
 }
 
 .pricing-toggle__btn {
@@ -427,12 +443,14 @@ section {
   cursor: pointer;
   background: transparent;
   color: var(--t-muted);
-  transition: background 0.25s, color 0.25s !important;
+  transition: color 0.25s !important;
   white-space: nowrap;
+  position: relative;
+  z-index: 1;
+  flex: 1;
 }
 
 .pricing-toggle__btn--active {
-  background: var(--t-accent);
   color: var(--t-accent-fg);
 }
 
