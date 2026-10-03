@@ -237,15 +237,7 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 // ─── Reusable Components ────────────────────────────────────────────────────
 
-function SlideToggle({
-	options,
-	activeIndex,
-	onSelect,
-}: {
-	options: [string, string];
-	activeIndex: number;
-	onSelect: (index: number) => void;
-}) {
+function SlideToggle({ options, activeIndex, onSelect }: { options: [string, string]; activeIndex: number; onSelect: (index: number) => void }) {
 	return (
 		<div className={`slide-toggle${activeIndex === 1 ? " slide-toggle--right" : ""}`}>
 			<span className="slide-toggle__slider" />
@@ -365,7 +357,7 @@ function Hero() {
 								Book a Free Audit
 							</a>
 							<a href="#services" className="btn btn-outline btn-lg">
-								Or Start Fresh
+								Start Fresh
 							</a>
 						</div>
 					</FadeIn>
@@ -664,10 +656,9 @@ function About() {
 								the code underneath and the experience on top.
 							</p>
 							<p>
-								But great code isn&apos;t just about building new. I also audit existing websites — finding
-								the bugs, UX issues, and conversion leaks that most developers miss. I believe fixing
-								what&apos;s broken is just as valuable as building from scratch, and often the smarter
-								starting point.
+								But great code isn&apos;t just about building new. I also audit existing websites — finding the bugs,
+								UX issues, and conversion leaks that most developers miss. I believe fixing what&apos;s broken is just
+								as valuable as building from scratch, and often the smarter starting point.
 							</p>
 							<p>
 								Based in San Diego, working with clients across the US. I&apos;m direct, easy to work with, and
