@@ -149,15 +149,31 @@ section {
 }
 
 .nav__logo {
-  font-family: var(--t-heading);
-  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0px;
   color: var(--t-text);
   text-decoration: none;
-  letter-spacing: -0.01em;
   flex-shrink: 0;
 }
 
-.nav__logo span {
+.nav__logo-icon {
+  width: 48px;
+  height: auto;
+}
+
+.nav__logo-pixels {
+  fill: var(--t-accent);
+}
+
+.nav__logo-text {
+  font-family: var(--t-heading);
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.nav__logo-text span {
   color: var(--t-accent);
 }
 

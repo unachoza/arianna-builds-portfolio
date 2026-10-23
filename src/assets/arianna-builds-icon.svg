@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="384" viewBox="0 0 400 384" role="img" aria-label="Arianna Builds wrench and pixels logo">
+  <title>Arianna Builds icon</title>
+  <g fill="#087d9e">
+    <path d="M71 299 C66 292 67 276 75 267 L161 179 C151 154 157 124 175 104 C190 87 209 81 230 81 L211 109 C201 124 198 139 209 155 C220 170 241 173 256 164 L273 150 L277 165 L297 180 C291 206 270 225 242 230 C225 234 208 231 192 223 L110 307 C99 319 82 318 71 307 C69 305 69 302 71 299 Z"/>
+  </g>
+  <g fill="#f27d64">
+    <rect x="289" y="56" width="34" height="34" rx="1.5"/>
+    <rect x="242" y="88" width="29" height="29" rx="1.5"/>
+    <rect x="272" y="119" width="21" height="21" rx="1.2"/>
+    <rect x="319" y="106" width="28" height="28" rx="1.5"/>
+    <rect x="293" y="145" width="21" height="21" rx="1.2"/>
+  </g>
+</svg>
