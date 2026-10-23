@@ -732,7 +732,7 @@ section {
 .step__number {
   font-family: var(--t-heading);
   font-size: 3.5rem;
-  color: var(--t-border);
+  color: var(--t-accent);
   line-height: 1;
   margin-bottom: 22px;
   font-weight: 400;
@@ -783,10 +783,10 @@ section {
 
 .work-card__img {
   width: 100%;
-aspect-ratio: 9 / 8;
+/* aspect-ratio: 9 / 8; */
   object-fit: cover;
   display: block;
-  filter: brightness(0.88) saturate(0.8);
+  /* filter: brightness(0.88) saturate(0.8); */
   transition: filter 0.3s !important;
 }
 
@@ -1195,6 +1195,9 @@ aspect-ratio: 9 / 8;
 }
 
 @media (max-width: 540px) {
+  .nav__logo-text {
+    font-size: 1.2rem;
+  }
   .hero__heading {
     font-size: clamp(2.2rem, 10vw, 3rem);
   }

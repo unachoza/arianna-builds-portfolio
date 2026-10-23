@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import madMen from "../src/assets/MadMen.jpg";
+import { PROJECTS } from "./utils/data";
 import "./fonts.css";
 import "./portfolio.css";
 
@@ -73,44 +74,62 @@ const NAV_SECTIONS = [
 	{ id: "contact", label: "Contact" },
 ];
 
-const PROJECTS = [
-	{
-		href: "https://landing-page-worklit.vercel.app/",
-		github: "https://github.com/unachoza/frontend-designs/tree/main/workit-landing-page",
-		img: "https://res.cloudinary.com/dh41vh9dx/image/upload/v1782789638/Screenshot_2026-06-29_at_8.19.37_PM_nw58p7.png",
-		alt: "Digital Freelance Business Site",
-		tag: "Small Business · Landing Page",
-		title: "Digital Freelance",
-		desc: "A conversion-focused site for a digital services business. Clean layout, strong CTAs, designed to build trust on first load.",
-	},
-	{
-		href: "http://amazinguinatours.surge.sh/",
-		github: "https://github.com/unachoza/AdvancedCSS/tree/master/Natours",
-		img: "https://res.cloudinary.com/dh41vh9dx/image/upload/v1782775361/Screenshot_2026-06-29_at_4.22.26_PM_mmix0u.png",
-		alt: "Nature Tours",
-		tag: "Service Business · Marketing Site",
-		title: "Nature Tours",
-		desc: "Polished marketing site with bold visuals, animated sections, and a design language that communicates adventure and professionalism.",
-	},
-	{
-		href: "http://realestatedesignsite.surge.sh",
-		github: "https://github.com/unachoza/AdvancedCSS/tree/master/Nexter",
-		img: "https://res.cloudinary.com/dh41vh9dx/image/upload/v1597182295/realestaterecom.png",
-		alt: "Real Estate Site",
-		tag: "Real Estate · Property Site",
-		title: "Real Estate",
-		desc: "Grid-based property showcase with clean typography and a browsable layout. Built with pure CSS Grid — no frameworks, no dependencies.",
-	},
-	{
-		href: "https://frontend-mentor-collection-arianna.netlify.app/agency",
-		github: "https://github.com/unachoza/Frontend-Mentor-Collection/tree/main/src/components/junior/AgencyLandingPage",
-		img: "https://res.cloudinary.com/dh41vh9dx/image/upload/v1782775273/Screenshot_2026-06-29_at_4.20.54_PM_sqssmi.png",
-		alt: "Marketing Agency",
-		tag: "Small Business · Landing Page",
-		title: "Marketing Agency",
-		desc: "Multi-tab interactive site with a rich dark theme, SVG diagrams, and smooth transitions — showcasing what's possible when engineering and design meet.",
-	},
-];
+// const PROJECTS = [
+// 	// {
+// 	// 	href: "https://landing-page-worklit.vercel.app/",
+// 	// 	github: "https://github.com/unachoza/frontend-designs/tree/main/workit-landing-page",
+// 	// 	img: "https://res.cloudinary.com/dh41vh9dx/image/upload/v1782789638/Screenshot_2026-06-29_at_8.19.37_PM_nw58p7.png",
+// 	// 	alt: "Digital Freelance Business Site",
+// 	// 	tag: "Small Business · Landing Page",
+// 	// 	title: "Digital Freelance",
+// 	// 	desc: "A conversion-focused site for a digital services business. Clean layout, strong CTAs, designed to build trust on first load.",
+// 	// },
+// 	{
+// 		href: "http://amazinguinatours.surge.sh/",
+// 		github: "https://github.com/unachoza/AdvancedCSS/tree/master/Natours",
+// 		img: "https://res.cloudinary.com/dh41vh9dx/image/upload/v1782775361/Screenshot_2026-06-29_at_4.22.26_PM_mmix0u.png",
+// 		alt: "Nature Tours",
+// 		tag: "Service Business · Marketing Site",
+// 		title: "Nature Tours",
+// 		desc: "Polished marketing site with bold visuals, animated sections, and a design language that communicates adventure and professionalism.",
+// 	},
+// 	{
+// 		href: "http://realestatedesignsite.surge.sh",
+// 		github: "https://github.com/unachoza/AdvancedCSS/tree/master/Nexter",
+// 		img: "https://res.cloudinary.com/dh41vh9dx/image/upload/v1597182295/realestaterecom.png",
+// 		alt: "Real Estate Site",
+// 		tag: "Real Estate · Property Site",
+// 		title: "Real Estate",
+// 		desc: "Grid-based property showcase with clean typography and a browsable layout. Built with pure CSS Grid — no frameworks, no dependencies.",
+// 	},
+// 	{
+// 		href: "https://frontend-mentor-collection-arianna.netlify.app/agency",
+// 		github: "https://github.com/unachoza/Frontend-Mentor-Collection/tree/main/src/components/junior/AgencyLandingPage",
+// 		img: "https://res.cloudinary.com/dh41vh9dx/image/upload/v1782775273/Screenshot_2026-06-29_at_4.20.54_PM_sqssmi.png",
+// 		alt: "Marketing Agency",
+// 		tag: "Small Business · Landing Page",
+// 		title: "Marketing Agency",
+// 		desc: "Multi-tab interactive site with a rich dark theme, SVG diagrams, and smooth transitions — showcasing what's possible when engineering and design meet.",
+// 	},
+// 	{
+// 		href: "masatool.com",
+// 		// github: "https://github.com/unachoza/Frontend-Mentor-Collection/tree/main/src/components/junior/AgencyLandingPage",
+// 		img: masaMockup,
+// 		alt: "Masa Tool",
+// 		tag: "Custom Web Application ·  UX Optimization · Website Audit",
+// 		title: "Masa Tool",
+// 		desc: "Designed and developed a custom digital tool for a precision manufacturing business.",
+// 	},
+// 	{
+// 		href: "https://masa-ashen.vercel.app/",
+// 		// github: "https://github.com/unachoza/Frontend-Mentor-Collection/tree/main/src/components/junior/AgencyLandingPage",
+// 		// img: "https://res.cloudinary.com/dh41vh9dx/image/upload/v1782775273/Screenshot_2026-06-29_at_4.20.54_PM_sqssmi.png",
+// 		alt: "The Peruvian Spot",
+// 		tag: "Digital Strategy · Website Audit · Brand Consolidation",
+// 		title: "The Peruvian Spot",
+// 		desc: "Creating a clearer digital presence for a growing food business.",
+// 	},
+// ];
 
 const AUDIT_SERVICES = [
 	{
@@ -276,7 +295,21 @@ function Nav({ scrolled, activeSection }: { scrolled: boolean; activeSection: st
 				<div className="container">
 					<div className="nav__inner">
 						<a href="#hero" className="nav__logo">
-							Arianna<span>.</span>
+							<svg className="nav__logo-icon" viewBox="0 0 400 384" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+								<g fill="currentColor">
+									<path d="M71 299 C66 292 67 276 75 267 L161 179 C151 154 157 124 175 104 C190 87 209 81 230 81 L211 109 C201 124 198 139 209 155 C220 170 241 173 256 164 L273 150 L277 165 L297 180 C291 206 270 225 242 230 C225 234 208 231 192 223 L110 307 C99 319 82 318 71 307 C69 305 69 302 71 299 Z" />
+								</g>
+								<g className="nav__logo-pixels">
+									<rect x="289" y="56" width="34" height="34" rx="1.5" />
+									<rect x="242" y="88" width="29" height="29" rx="1.5" />
+									<rect x="272" y="119" width="21" height="21" rx="1.2" />
+									<rect x="319" y="106" width="28" height="28" rx="1.5" />
+									<rect x="293" y="145" width="21" height="21" rx="1.2" />
+								</g>
+							</svg>
+							<span className="nav__logo-text">
+								arianna<span> builds</span>
+							</span>
 						</a>
 
 						{/* Desktop links */}
@@ -583,7 +616,7 @@ function Work() {
 									<div className="work-card__tag">{p.tag}</div>
 									<div className="work-card__title">{p.title}</div>
 									<div className="work-card__desc">{p.desc}</div>
-									<div className="work-card__links">
+									{/* <div className="work-card__links">
 										<a
 											href={p.href}
 											target="_blank"
@@ -602,7 +635,7 @@ function Work() {
 										>
 											GitHub
 										</a>
-									</div>
+									</div> */}
 								</div>
 							</a>
 						</FadeIn>
@@ -680,37 +713,37 @@ function About() {
 	);
 }
 
-function Testimonials() {
-	return (
-		<section id="testimonials" className="testimonials">
-			<div className="container">
-				<FadeIn>
-					<p className="s-label">Testimonials</p>
-					<h2 className="s-title" style={{ marginBottom: 50 }}>
-						What clients say.
-					</h2>
-				</FadeIn>
-				<div className="t-grid">
-					{TESTIMONIALS.map((t, i) => (
-						<FadeIn key={t.name} delay={i * 100}>
-							<div className="t-card">
-								<div className="t-stars">★★★★★</div>
-								<p className="t-quote">&ldquo;{t.quote}&rdquo;</p>
-								<div className="t-author">
-									<div className="t-avatar">{t.initial}</div>
-									<div>
-										<div className="t-name">{t.name}</div>
-										<div className="t-role">{t.role}</div>
-									</div>
-								</div>
-							</div>
-						</FadeIn>
-					))}
-				</div>
-			</div>
-		</section>
-	);
-}
+// function Testimonials() {
+// 	return (
+// 		<section id="testimonials" className="testimonials">
+// 			<div className="container">
+// 				<FadeIn>
+// 					<p className="s-label">Testimonials</p>
+// 					<h2 className="s-title" style={{ marginBottom: 50 }}>
+// 						What clients say.
+// 					</h2>
+// 				</FadeIn>
+// 				<div className="t-grid">
+// 					{TESTIMONIALS.map((t, i) => (
+// 						<FadeIn key={t.name} delay={i * 100}>
+// 							<div className="t-card">
+// 								<div className="t-stars">★★★★★</div>
+// 								<p className="t-quote">&ldquo;{t.quote}&rdquo;</p>
+// 								<div className="t-author">
+// 									<div className="t-avatar">{t.initial}</div>
+// 									<div>
+// 										<div className="t-name">{t.name}</div>
+// 										<div className="t-role">{t.role}</div>
+// 									</div>
+// 								</div>
+// 							</div>
+// 						</FadeIn>
+// 					))}
+// 				</div>
+// 			</div>
+// 		</section>
+// 	);
+// }
 
 function Contact() {
 	const links = [
@@ -851,7 +884,7 @@ export default function App() {
 			<Process />
 			<Work />
 			<About />
-			<Testimonials />
+			{/* <Testimonials /> */}
 			<Contact />
 			<SiteFooter />
 		</div>
