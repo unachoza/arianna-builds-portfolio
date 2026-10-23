@@ -204,27 +204,6 @@ const PACKAGES = [
 	},
 ];
 
-const TESTIMONIALS = [
-	{
-		quote: "Arianna delivered exactly what she promised — on time and on budget. Our site looks more professional than ones I've seen from agencies charging 3x the price.",
-		name: "Maria S.",
-		role: "Owner, Boutique Law Firm",
-		initial: "M",
-	},
-	{
-		quote: "She asked all the right questions upfront and didn't need hand-holding. The site was done in 10 days. I've already gotten 3 new client inquiries through the contact form.",
-		name: "James T.",
-		role: "Principal, Consulting Firm",
-		initial: "J",
-	},
-	{
-		quote: "The monthly retainer has been a game changer. I used to dread asking my nephew to update the site. Now I just email Arianna and it's done within 48 hours.",
-		name: "Rachel K.",
-		role: "Owner, Physical Therapy Practice",
-		initial: "R",
-	},
-];
-
 // ─── Fade-in hook ────────────────────────────────────────────────────────────
 
 function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
