@@ -143,7 +143,7 @@ const AUDIT_SERVICES = [
 	},
 	{
 		tier: "Targeted Fix",
-		price: "$200–$800",
+		price: "$350–$800",
 		delivery: "1–3 days",
 		featured: false,
 		desc: "Fix one high-impact issue: typo, form bug, broken redirect, etc.",
@@ -357,12 +357,14 @@ function Hero() {
 					<FadeIn>
 						<p className="hero__eyebrow">Web Developer · San Diego, CA</p>
 						<h1 className="hero__heading">
-							<em>Strategic fixes</em> to your existing site
-							<br /> or <em>Custom websites</em> from scratch
+							<em>Strategic fixes</em> to your existing site or
+							<br /> <em>Custom websites</em>
+							<br /> from scratch
 						</h1>
 						<p className="hero__sub">
-							Whether you're starting from scratch or improving what you have, I find opportunities most miss and deliver
-							fast. Audit your site for free. Fix what's broken. Build what's next.
+							Whether you're starting from scratch or improving what you have, <br />I find opportunities most miss and
+							deliver fast. Audit your site for free. <br />
+							Fix what's broken. Build what's next.
 						</p>
 						<div className="hero__ctas">
 							<a href="mailto:ariannacodes@gmail.com" className="btn btn-primary btn-lg">
@@ -377,10 +379,10 @@ function Hero() {
 					<FadeIn delay={150}>
 						<div className="stats-grid">
 							{[
-								{ n: "25+", l: "Projects shipped" },
-								{ n: "5 yrs", l: "Engineering experience" },
-								{ n: "1 wk", l: "Starter site delivery" },
-								{ n: "100%", l: "Custom code" },
+								// { n: "25+", l: "Projects shipped" },
+								{ n: "7 years", l: "Engineering experience" },
+								{ n: "1 week", l: "Starter site delivery" },
+								// { n: "Professional Engineering," },
 							].map((s) => (
 								<div key={s.l} className="stat-card">
 									<div className="stat-n">{s.n}</div>
