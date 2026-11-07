@@ -235,13 +235,30 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 // ─── Reusable Components ────────────────────────────────────────────────────
 
-function SlideToggle({ options, activeIndex, onSelect }: { options: [string, string]; activeIndex: number; onSelect: (index: number) => void }) {
+function SlideToggle({
+	options,
+	activeIndex,
+	onSelect,
+	ids,
+	panelIds,
+}: {
+	options: [string, string];
+	activeIndex: number;
+	onSelect: (index: number) => void;
+	ids?: [string, string];
+	panelIds?: [string, string];
+}) {
 	return (
 		<div className={`slide-toggle${activeIndex === 1 ? " slide-toggle--right" : ""}`}>
 			<span className="slide-toggle__slider" />
 			{options.map((label, i) => (
 				<button
 					key={label}
+					type="button"
+					role={ids ? "tab" : undefined}
+					id={ids ? ids[i] : undefined}
+					aria-selected={ids ? i === activeIndex : undefined}
+					aria-controls={panelIds ? panelIds[i] : undefined}
 					className={`slide-toggle__btn${i === activeIndex ? " slide-toggle__btn--active" : ""}`}
 					onClick={() => onSelect(i)}
 				>
@@ -308,8 +325,11 @@ function Nav({ scrolled, activeSection }: { scrolled: boolean; activeSection: st
 								Get a Quote
 							</a>
 							<button
+								type="button"
 								className={`nav__hamburger${menuOpen ? " open" : ""}`}
-								aria-label="Toggle menu"
+								aria-label="Toggle navigation menu"
+								aria-expanded={menuOpen}
+								aria-controls="mobile-nav-drawer"
 								onClick={() => setMenuOpen((v) => !v)}
 							>
 								<span />
@@ -322,7 +342,7 @@ function Nav({ scrolled, activeSection }: { scrolled: boolean; activeSection: st
 			</nav>
 
 			{/* Mobile full-screen drawer */}
-			<div className={`nav__drawer${menuOpen ? " open" : ""}`}>
+			<div id="mobile-nav-drawer" className={`nav__drawer${menuOpen ? " open" : ""}`}>
 				{NAV_SECTIONS.map(({ id, label }) => (
 					<a
 						key={id}
@@ -350,13 +370,13 @@ function Nav({ scrolled, activeSection }: { scrolled: boolean; activeSection: st
 
 function Hero() {
 	return (
-		<section id="hero" className="hero">
+		<section id="hero" className="hero" aria-labelledby="hero-heading">
 			<div className="hero__glow" />
 			<div className="container">
 				<div className="hero__grid">
 					<FadeIn>
 						<p className="hero__eyebrow">Web Developer · San Diego, CA</p>
-						<h1 className="hero__heading">
+						<h1 className="hero__heading" id="hero-heading">
 							<em>Strategic fixes</em> to your existing site or
 							<br /> <em>Custom websites</em>
 							<br /> from scratch
@@ -401,11 +421,11 @@ function Services() {
 	const [activeTab, setActiveTab] = useState<"audit" | "build">("audit");
 
 	return (
-		<section id="services" className="services">
+		<section id="services" className="services" aria-labelledby="services-title">
 			<div className="container">
 				<FadeIn>
 					<p className="s-label">Services & Pricing</p>
-					<h2 className="s-title">
+					<h2 className="s-title" id="services-title">
 						Straightforward packages.
 						<br />
 						No surprises.
@@ -417,69 +437,81 @@ function Services() {
 				</FadeIn>
 
 				<FadeIn delay={50}>
-					<SlideToggle
-						options={["Audit & Fix", "Starting Fresh"]}
-						activeIndex={activeTab === "audit" ? 0 : 1}
-						onSelect={(i) => setActiveTab(i === 0 ? "audit" : "build")}
-					/>
+					<div role="tablist" aria-label="Service types">
+						<SlideToggle
+							options={["Audit & Fix", "Starting Fresh"]}
+							activeIndex={activeTab === "audit" ? 0 : 1}
+							onSelect={(i) => setActiveTab(i === 0 ? "audit" : "build")}
+							ids={["services-tab-audit", "services-tab-build"]}
+							panelIds={["services-panel-audit", "services-panel-build"]}
+						/>
+					</div>
 				</FadeIn>
 
-				{activeTab === "audit" && (
-					<div className="services__grid--audit">
-						<FadeIn delay={100}>
-							<div className="pkg-grid">
-								{AUDIT_SERVICES.map((pkg) => (
-									<div key={pkg.tier} className={`pkg${pkg.featured ? " pkg--featured" : ""}`}>
-										{pkg.featured && <span className="pkg__badge">★ Most Popular</span>}
-										<div className="pkg__tier">{pkg.tier}</div>
-										<div className="pkg__price">{pkg.price}</div>
-										<div className="pkg__delivery">{pkg.delivery}</div>
-										<p className="pkg__desc">{pkg.desc}</p>
-										<div className="pkg__divider" />
-										{pkg.on.map((f) => (
-											<div key={f} className="pkg__feature pkg__feature--on">
-												<span className="ico">+</span> {f}
-											</div>
-										))}
-										{pkg.off.map((f) => (
-											<div key={f} className="pkg__feature pkg__feature--off">
-												<span>–</span> {f}
-											</div>
-										))}
-									</div>
-								))}
-							</div>
-						</FadeIn>
-					</div>
-				)}
+				<div
+					id="services-panel-audit"
+					role="tabpanel"
+					aria-labelledby="services-tab-audit"
+					className="services__grid--audit"
+					hidden={activeTab !== "audit"}
+				>
+					<FadeIn delay={100}>
+						<div className="pkg-grid">
+							{AUDIT_SERVICES.map((pkg) => (
+								<div key={pkg.tier} className={`pkg${pkg.featured ? " pkg--featured" : ""}`}>
+									{pkg.featured && <span className="pkg__badge">★ Most Popular</span>}
+									<div className="pkg__tier">{pkg.tier}</div>
+									<div className="pkg__price">{pkg.price}</div>
+									<div className="pkg__delivery">{pkg.delivery}</div>
+									<p className="pkg__desc">{pkg.desc}</p>
+									<div className="pkg__divider" />
+									{pkg.on.map((f) => (
+										<div key={f} className="pkg__feature pkg__feature--on">
+											<span className="ico">+</span> {f}
+										</div>
+									))}
+									{pkg.off.map((f) => (
+										<div key={f} className="pkg__feature pkg__feature--off">
+											<span>–</span> {f}
+										</div>
+									))}
+								</div>
+							))}
+						</div>
+					</FadeIn>
+				</div>
 
-				{activeTab === "build" && (
-					<div className="services__grid--build">
-						<FadeIn delay={100}>
-							<div className="pkg-grid">
-								{PACKAGES.map((pkg) => (
-									<div key={pkg.tier} className={`pkg${pkg.featured ? " pkg--featured" : ""}`}>
-										{pkg.featured && <span className="pkg__badge">★ Most Popular</span>}
-										<div className="pkg__tier">{pkg.tier}</div>
-										<div className="pkg__price">{pkg.price}</div>
-										<div className="pkg__delivery">{pkg.delivery}</div>
-										<div className="pkg__divider" />
-										{pkg.on.map((f) => (
-											<div key={f} className="pkg__feature pkg__feature--on">
-												<span className="ico">+</span> {f}
-											</div>
-										))}
-										{pkg.off.map((f) => (
-											<div key={f} className="pkg__feature pkg__feature--off">
-												<span>–</span> {f}
-											</div>
-										))}
-									</div>
-								))}
-							</div>
-						</FadeIn>
-					</div>
-				)}
+				<div
+					id="services-panel-build"
+					role="tabpanel"
+					aria-labelledby="services-tab-build"
+					className="services__grid--build"
+					hidden={activeTab !== "build"}
+				>
+					<FadeIn delay={100}>
+						<div className="pkg-grid">
+							{PACKAGES.map((pkg) => (
+								<div key={pkg.tier} className={`pkg${pkg.featured ? " pkg--featured" : ""}`}>
+									{pkg.featured && <span className="pkg__badge">★ Most Popular</span>}
+									<div className="pkg__tier">{pkg.tier}</div>
+									<div className="pkg__price">{pkg.price}</div>
+									<div className="pkg__delivery">{pkg.delivery}</div>
+									<div className="pkg__divider" />
+									{pkg.on.map((f) => (
+										<div key={f} className="pkg__feature pkg__feature--on">
+											<span className="ico">+</span> {f}
+										</div>
+									))}
+									{pkg.off.map((f) => (
+										<div key={f} className="pkg__feature pkg__feature--off">
+											<span>–</span> {f}
+										</div>
+									))}
+								</div>
+							))}
+						</div>
+					</FadeIn>
+				</div>
 
 				<FadeIn delay={150}>
 					<div className="retainer">
@@ -536,16 +568,31 @@ const PROCESS_BUILD = [
 	},
 ];
 
+function ProcessSteps({ steps }: { steps: typeof PROCESS_AUDIT }) {
+	return (
+		<FadeIn delay={100}>
+			<div className="steps-grid">
+				{steps.map((s) => (
+					<div key={s.n} className="step">
+						<div className="step__number">{s.n}</div>
+						<h3 className="step__title">{s.title}</h3>
+						<p className="step__desc">{s.desc}</p>
+					</div>
+				))}
+			</div>
+		</FadeIn>
+	);
+}
+
 function Process() {
 	const [processPath, setProcessPath] = useState<"audit" | "build">("audit");
-	const steps = processPath === "audit" ? PROCESS_AUDIT : PROCESS_BUILD;
 
 	return (
-		<section id="process" className="process">
+		<section id="process" className="process" aria-labelledby="process-title">
 			<div className="container">
 				<FadeIn>
 					<p className="s-label">How I Work</p>
-					<h2 className="s-title" style={{ marginBottom: 50 }}>
+					<h2 className="s-title" id="process-title" style={{ marginBottom: 50 }}>
 						Simple process
 						<br />
 						Zero headaches
@@ -553,24 +600,23 @@ function Process() {
 				</FadeIn>
 
 				<FadeIn delay={50}>
-					<SlideToggle
-						options={["Audit & Improve", "Build from Scratch"]}
-						activeIndex={processPath === "audit" ? 0 : 1}
-						onSelect={(i) => setProcessPath(i === 0 ? "audit" : "build")}
-					/>
-				</FadeIn>
-
-				<FadeIn delay={100}>
-					<div className="steps-grid">
-						{steps.map((s) => (
-							<div key={s.n} className="step">
-								<div className="step__number">{s.n}</div>
-								<h3 className="step__title">{s.title}</h3>
-								<p className="step__desc">{s.desc}</p>
-							</div>
-						))}
+					<div role="tablist" aria-label="How I work">
+						<SlideToggle
+							options={["Audit & Improve", "Build from Scratch"]}
+							activeIndex={processPath === "audit" ? 0 : 1}
+							onSelect={(i) => setProcessPath(i === 0 ? "audit" : "build")}
+							ids={["process-tab-audit", "process-tab-build"]}
+							panelIds={["process-panel-audit", "process-panel-build"]}
+						/>
 					</div>
 				</FadeIn>
+
+				<div id="process-panel-audit" role="tabpanel" aria-labelledby="process-tab-audit" hidden={processPath !== "audit"}>
+					<ProcessSteps steps={PROCESS_AUDIT} />
+				</div>
+				<div id="process-panel-build" role="tabpanel" aria-labelledby="process-tab-build" hidden={processPath !== "build"}>
+					<ProcessSteps steps={PROCESS_BUILD} />
+				</div>
 			</div>
 		</section>
 	);
@@ -578,11 +624,11 @@ function Process() {
 
 function Work() {
 	return (
-		<section id="work" className="work">
+		<section id="work" className="work" aria-labelledby="work-title">
 			<div className="container">
 				<FadeIn>
 					<p className="s-label">Selected Work</p>
-					<h2 className="s-title" style={{ marginBottom: 50 }}>
+					<h2 className="s-title" id="work-title" style={{ marginBottom: 50 }}>
 						Built to perform.
 						<br />
 						<em>Designed to impress.</em>
@@ -645,23 +691,23 @@ function About() {
 	];
 
 	return (
-		<section id="about" className="about">
+		<section id="about" className="about" aria-labelledby="about-title">
 			<div className="container">
 				<div className="about__grid">
 					<FadeIn>
-						<img src={madMen} className="about__img-placeholder" alt="head shot" />
+						<img src={madMen} className="about__img-placeholder" alt="Portrait photo, About section" />
 					</FadeIn>
 
 					<FadeIn delay={100}>
 						<div className="about__content">
 							<p className="s-label">About Me</p>
-							<h2 className="s-title">
+							<h2 className="s-title" id="about-title">
 								Engineering-grade work.
 								<br />
 								<em>Design-forward results.</em>
 							</h2>
 							<p>
-								I&apos;m Arianna — a frontend engineer turned freelance web developer. I&apos;ve spent years writing
+								I&apos;m Arianna Choza — a frontend engineer turned freelance web developer. I&apos;ve spent years writing
 								production-quality code, and now I bring that same rigor to websites for small businesses.
 							</p>
 							<p>
@@ -735,11 +781,11 @@ function Contact() {
 	];
 
 	return (
-		<section id="contact" className="contact">
+		<section id="contact" className="contact" aria-labelledby="contact-heading">
 			<div className="container">
 				<FadeIn>
 					<p className="contact__label">Let&apos;s Work Together</p>
-					<h2 className="contact__heading">
+					<h2 className="contact__heading" id="contact-heading">
 						Ready for a website
 						<br />
 						your business deserves?
@@ -860,13 +906,15 @@ export default function App() {
 	return (
 		<div className="portfolio" style={themeVars}>
 			<Nav scrolled={scrolled} activeSection={activeSection} />
-			<Hero />
-			<Services />
-			<Process />
-			<Work />
-			<About />
-			{/* <Testimonials /> */}
-			<Contact />
+			<main>
+				<Hero />
+				<Services />
+				<Process />
+				<Work />
+				<About />
+				{/* <Testimonials /> */}
+				<Contact />
+			</main>
 			<SiteFooter />
 		</div>
 	);
