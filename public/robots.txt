@@ -1,0 +1,30 @@
+# robots.txt for arianna-builds.dev
+#
+# Policy: ordinary search crawlers and search-oriented / user-initiated AI
+# agents are fully allowed. Only model-training scraper bots are disallowed.
+
+# Default: allow all crawlers (covers Googlebot, Bingbot, OAI-SearchBot,
+# PerplexityBot, user-initiated AI browsing, and anything not named below).
+User-agent: *
+Allow: /
+
+# --- AI model-training crawlers: disallowed ---
+# GPTBot (OpenAI training crawler) and CCBot (Common Crawl, a common
+# training-data source) are blocked from crawling for model training.
+# Note: OAI-SearchBot (OpenAI's search index) is intentionally NOT listed
+# here, so ChatGPT search results remain accessible.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+# --- Google-Extended: INTENTIONALLY ALLOWED ---
+# Google-Extended controls whether content may be used to improve Gemini /
+# Vertex AI generative models. It is left allowed on purpose: GEO and
+# visibility across Google's Gemini ecosystem are current priorities.
+# Tradeoff: this permits Google to use site content for generative model
+# training in exchange for that visibility. Revisit this decision if the
+# priority shifts away from Gemini-ecosystem discoverability.
+
+Sitemap: https://arianna-builds.dev/sitemap.xml
